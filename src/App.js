@@ -1,3 +1,4 @@
+import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json'
 import logo from './logo.svg';
 import './App.css';
 
