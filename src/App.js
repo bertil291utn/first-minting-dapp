@@ -6,6 +6,7 @@ import './App.css';
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 function App() {
   const [greeting, setGreeting] = useState();
+  const [displayGreeting, setDisplayGreeting] = useState();
 
   async function requestAccount() {
     await window.ethereum.request({ method: 'eth_requestAccounts' })
@@ -17,6 +18,7 @@ function App() {
     const contract = new ethers.Contract(contractAddress, Greeter.abi, provider)
     try {
       const data = await contract.greet()
+      setDisplayGreeting(data);
       console.log('data: ', data)
     } catch (err) {
       console.log("Error: ", err)
@@ -33,13 +35,15 @@ function App() {
     const transaction = await contract.setGreeting(greeting)
     await transaction.wait()
     fetchGreeting()
+    setGreeting('')
   }
 
   return (
     <div className="App">
       <header className="App-header">
         <button onClick={fetchGreeting}>Fetch Greeting</button>
-        <input onChange={e => setGreeting(e.target.value)} placeholder="Set greeting" />
+        <span>{displayGreeting}</span>
+        <input onChange={e => setGreeting(e.target.value)} value={greeting} placeholder="Set greeting" />
         <button onClick={setCGreeting}>Set Greeting</button>
       </header>
     </div>
