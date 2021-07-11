@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  console.log("Greeter ABI: ", Greeter.abi);
   return (
     <div className="App">
       <header className="App-header">
