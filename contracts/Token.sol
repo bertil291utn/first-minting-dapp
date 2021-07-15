@@ -6,7 +6,7 @@ import "hardhat/console.sol";
 contract Token {
   string public name = "Punk Guitars Token";
   string public symbol = "pgT";
-  uint public totalSupply = 1000001;
+  uint public totalSupply = 1000000;
   mapping(address => uint) balances;
 
   constructor() {
