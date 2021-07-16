@@ -5,8 +5,8 @@ import "hardhat/console.sol";
 
 contract Token {
   string public name = "Punk Guitars Token";
-  string public symbol = "pgT";
-  uint public totalSupply = 1000000;
+  string public symbol = "PGT";
+  uint public totalSupply = 1000002;
   mapping(address => uint) balances;
 
   constructor() {
@@ -14,7 +14,7 @@ contract Token {
   }
 
   function transfer(address to, uint amount) external {
-    require(balances[msg.sender] >= amount, "Not enough tokens");
+    require(balances[msg.sender]>=amount, "Not enough tokens");
     balances[msg.sender] -= amount;
     balances[to] += amount;
   }
